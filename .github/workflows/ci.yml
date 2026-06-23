@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+# Distribution is via JitPack (https://jitpack.io) — it builds the artifact
+# on-demand from the git tag, no registry credentials required. Consumers add
+# the JitPack repo and `com.github.CurrencyCore:currencycore-kotlin:<tag>`.
+# This workflow just proves the Maven publication builds.
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,21 +19,5 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - run: ./gradlew build
-
-  publish:
-    needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-      # Configure a Maven Central (or GitHub Packages) repository in build.gradle,
-      # then publish. Credentials come from repository secrets.
-      - run: ./gradlew publish
-        env:
-          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_USERNAME }}
-          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_PASSWORD }}
+      - run: chmod +x gradlew
+      - run: ./gradlew assemble publishToMavenLocal --console=plain

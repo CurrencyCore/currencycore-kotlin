@@ -7,11 +7,16 @@ Generated from the CurrencyCore OpenAPI 3.1 spec with
 [OpenAPI Generator](https://openapi-generator.tech) (`kotlin`, OkHttp), plus a
 thin `CurrencyCore.client()` helper for API-key and version handling.
 
-## Install (Gradle)
+## Install (Gradle, via JitPack)
 
 ```kotlin
+repositories {
+    mavenCentral()
+    maven { url = uri("https://jitpack.io") }
+}
+
 dependencies {
-    implementation("com.currencycore:currencycore-sdk:0.1.0")
+    implementation("com.github.CurrencyCore:currencycore-kotlin:0.1.0")
 }
 ```
 

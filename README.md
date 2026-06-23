@@ -7,6 +7,9 @@ Generated from the CurrencyCore OpenAPI 3.1 spec with
 [OpenAPI Generator](https://openapi-generator.tech) (`kotlin`, OkHttp), plus a
 thin `CurrencyCore.client()` helper for API-key and version handling.
 
+- **Website:** https://currency-core.com
+- **Documentation:** https://currency-core.com/docs
+
 ## Install (Gradle, via JitPack)
 
 ```kotlin
@@ -16,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.CurrencyCore:currencycore-kotlin:0.1.1")
+    implementation("com.github.CurrencyCore:currencycore-kotlin:0.1.2")
 }
 ```
 
